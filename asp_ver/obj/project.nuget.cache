@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6bUw/YOa6s/GIJ9xZmF2r4cHe8VS4cRSsX6yF/Kv4Fp85oBeLzkgwRcBCvgmUXo64RpgzE/VeunYi4AyMOayNw==",
+  "dgSpecHash": "3+le9AJrWk09ljtIbfHCv0+mYXQoHnSQtrNoSOxulCigzYdeJ4gFKv71yg7vEKeQYKf8D6kTO4Ar8GVcjqVIUw==",
   "success": true,
-  "projectFilePath": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ve/asp_ve.csproj",
+  "projectFilePath": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/asp_ve.csproj",
   "expectedPackageFiles": [
     "/home/holiday/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.11/microsoft.aspnetcore.app.ref.7.0.11.nupkg.sha512"
   ],

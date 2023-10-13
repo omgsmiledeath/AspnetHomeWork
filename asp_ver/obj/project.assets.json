@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ve/asp_ve.csproj",
+      "projectUniqueName": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/asp_ve.csproj",
       "projectName": "asp_ve",
-      "projectPath": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ve/asp_ve.csproj",
+      "projectPath": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/asp_ve.csproj",
       "packagesPath": "/home/holiday/.nuget/packages/",
-      "outputPath": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ve/obj/",
+      "outputPath": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/holiday/.nuget/NuGet/NuGet.Config"
