@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/wwwroot/js/Preregistration/reg.js",
+      "PackagePath": "staticwebassets/js/Preregistration/reg.js"
+    },
+    {
       "Id": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/wwwroot/lib/bootstrap/css/bootstrap-grid.css",
       "PackagePath": "staticwebassets/lib/bootstrap/css/bootstrap-grid.css"
     },

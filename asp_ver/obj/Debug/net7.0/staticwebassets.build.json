@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gDKFsYs/l/fkjjB0ws0tA7Xvgj0iullYSyj6OOveocE=",
+  "Hash": "sOFoCLtwYFqSvV7MwYRLppgS8D0DQT0ZRApNT6U6E6g=",
   "Source": "asp_ve",
   "BasePath": "_content/asp_ve",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/wwwroot/js/Preregistration/reg.js",
+      "SourceId": "asp_ve",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/wwwroot/",
+      "BasePath": "_content/asp_ve",
+      "RelativePath": "js/Preregistration/reg.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/Preregistration/reg.js"
+    },
     {
       "Identity": "/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/wwwroot/lib/bootstrap/css/bootstrap-grid.css",
       "SourceId": "asp_ve",

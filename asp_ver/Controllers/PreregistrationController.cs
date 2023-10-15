@@ -8,8 +8,8 @@ public class PreregistrationController:Controller {
     }
 
     public IActionResult Index(string date) {
-         DateOnly temp = new DateOnly();
-        date = date is null?$"{temp.ToString()}-{temp.ToString()}-{temp.ToString()}":date;
+         DateOnly temp = DateOnly.FromDateTime(DateTime.Now);
+        date = date is null?$"{temp.Year.ToString()}-{temp.Month.ToString()}-{temp.Day.ToString()}":date;
         PreregistrationVM preregVm = new PreregistrationVM(_repo.GetEntries(),
                                                             DateOnly.ParseExact(date,"yyyy-MM-dd"));        
         return View(preregVm);

@@ -1,8 +1,17 @@
 @model PreregistrationVM
 
 <h4>Выберите день:</h4>
-<input type="date" value=@Model.GetDate />
+<form method="post">
+<span><input type="date" value=@Model.GetDate name="date"/> <input type="submit" value="Сменить"/></span>
 
+    <script type="application/javascript">
+        let OnDatePicker =  (e) => {
+            let date = e.target.value;
+            history.pushState(null,null,`/preregistration?date=${date}`);
+            }
+    </script>
+
+</form> 
 @foreach (var e in Model.GetInputEntries()){
     var status = @e.isChecked?"Занято":"Свободно";
     var bgColor = @e.isChecked?"#696969":"#A9A9A9";
