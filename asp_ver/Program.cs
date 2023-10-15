@@ -9,5 +9,5 @@ app.UseStatusCodePages();
 app.UseStaticFiles();
 app.UseRouting();
 app.MapDefaultControllerRoute();
-
+SeedData.AddData(app);
 app.Run();

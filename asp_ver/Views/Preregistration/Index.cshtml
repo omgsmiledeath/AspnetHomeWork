@@ -1,1 +1,15 @@
-<p>Запись</p>
+@model PreregistrationVM
+
+
+
+@foreach (var e in Model.GetInputEntries()){
+    var status = @e.isChecked?"Занято":"Свободно";
+    <div class="card card-outline-primary">
+        <div class="bg-faded">
+            <h4>
+                @status
+                <span class="badge badge-primary" style="float:right">@e.Time</span>
+            </h4>
+        </div>
+    </div>
+}

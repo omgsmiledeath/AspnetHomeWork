@@ -8,10 +8,10 @@ public class SiteDbContext:DbContext
     //CTOR
     public SiteDbContext()
     {
-    var folder = Environment.SpecialFolder.LocalApplicationData;
-    var path = Environment.GetFolderPath(folder);
-    _dbPath = System.IO.Path.Join(path,"SVS.db"); 
-    System.Console.WriteLine(_dbPath);
+        var folder = Environment.SpecialFolder.LocalApplicationData;
+        var path = Environment.GetFolderPath(folder);
+        _dbPath = System.IO.Path.Join(path,"SVS.db"); 
+        System.Console.WriteLine(_dbPath);
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
