@@ -1,10 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 
 public class PreregistrationController:Controller {
-    private PreregistrationVM preregVm;
+    private IRepository _repo; 
     public PreregistrationController(IRepository repo)
     {
-        preregVm = new PreregistrationVM(repo.GetEntries(),new DateOnly(2023,10,15));        
+        _repo = repo;
     }
-    public IActionResult Index() => View(preregVm);
+
+    public IActionResult Index(string date) {
+         DateOnly temp = new DateOnly();
+        date = date is null?$"{temp.ToString()}-{temp.ToString()}-{temp.ToString()}":date;
+        PreregistrationVM preregVm = new PreregistrationVM(_repo.GetEntries(),
+                                                            DateOnly.ParseExact(date,"yyyy-MM-dd"));        
+        return View(preregVm);
+    }
 }
