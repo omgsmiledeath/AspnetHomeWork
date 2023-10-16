@@ -10,4 +10,10 @@ public class SiteRepository : IRepository
     {
         return _context.Entries;    
     }
+    public void AddEntry(Entry entry){
+        System.Console.WriteLine(entry);
+        _context.Add(entry);
+        _context.SaveChanges();
+    }
+
 }

@@ -1,0 +1,1 @@
+public record NewEntry(int[]Ids,string Owner,string Phone,string Description,string Date);
