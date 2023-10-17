@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-sm-1">
                   <form method="post" asp-controller="Preregistration" asp-action="Entries">
-                  <label name="entryId" value=@e.ThisEntry?.Id></label> 
+                  <input hidden="true" name="entryId" value=@e.ThisEntry?.Id />
                   <input type="submit" value="Инфо" />
                   </form>
                 </div>
