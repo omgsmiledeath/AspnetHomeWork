@@ -8,41 +8,44 @@ public class PreregistrationController:Controller {
     }
 
     [HttpGet]
-    public IActionResult Index(){
+    public async Task<IActionResult> Index(){
         DateOnly temp = DateOnly.FromDateTime(DateTime.Now);
         string date = $"{temp.Year.ToString()}-{temp.Month.ToString()}-{temp.Day.ToString()}";
-        PreregistrationVM preregVm = new PreregistrationVM(_repo.GetEntries(),                                                   DateOnly.ParseExact(date,"yyyy-MM-dd"));        
+        PreregistrationVM preregVm = new PreregistrationVM(await _repo.GetEntries(temp), DateOnly.ParseExact(date,"yyyy-MM-dd"));        
         return View(preregVm);
     }
     [HttpPost]
-    public IActionResult Index(string date) {
+    public async Task<IActionResult> Index(string date) {
          DateOnly temp = DateOnly.FromDateTime(DateTime.Now);
         date = date is null?$"{temp.Year.ToString()}-{temp.Month.ToString()}-{temp.Day.ToString()}":date;
-        PreregistrationVM preregVm = new PreregistrationVM(_repo.GetEntries(),
-                                                            DateOnly.ParseExact(date,"yyyy-MM-dd"));        
+        var notStrDate =  DateOnly.ParseExact(date,"yyyy-MM-dd");
+        PreregistrationVM preregVm = new PreregistrationVM(await _repo.GetEntries(notStrDate),
+                                                            DateOnly.ParseExact(date,"yyyy-MM-dd")); 
+
         return View(preregVm);
     }
 
     [HttpPost]
-    public IActionResult Create(NewEntry newEntry){
+    public async Task<IActionResult> Create(NewEntry newEntry){
         if(newEntry.Ids is null){
             return View("Create",new CreateEntryVM(new(),"Время не выбранно"));
         }
+        var newEntries = new List<Entry>();
         if(newEntry.Ids.Count() > 1)
         foreach(var i in newEntry.Ids) {
-            
-            var dt = EntriesFactory.CreateEntryDT(i,newEntry.Date);
-            var createdEntry = EntriesFactory.CreateEntry(new EntryProps(newEntry.Owner,
-            newEntry.Phone,newEntry.Description,dt));
-            _repo.AddEntry(createdEntry);
+            newEntries.Add(await entriyToBase(newEntry.Date,newEntry.Owner,newEntry.Phone,newEntry.Description,i));
         }
         else {
-            var dt = EntriesFactory.CreateEntryDT(newEntry.Ids[0],newEntry.Date);
-            var createdEntry = EntriesFactory.CreateEntry(new EntryProps(newEntry.Owner,
-            newEntry.Phone,newEntry.Description,dt));
-            _repo.AddEntry(createdEntry);
+            newEntries.Add(await entriyToBase(newEntry.Date,newEntry.Owner,newEntry.Phone,newEntry.Description,newEntry.Ids[0]));
 
         }
-        return View("Create",new CreateEntryVM(new(),"Запись добавленна"));
+        return View("Create",new CreateEntryVM(newEntries,"Запись добавленна"));
+    }
+    private async Task<Entry> entriyToBase (string Date,string Owner,string Phone,string Description,int id){
+            var dt = EntriesFactory.CreateEntryDT(id,Date);
+            var createdEntry = EntriesFactory.CreateEntry(new EntryProps(Owner,
+            Phone,Description,dt));
+           await _repo.AddEntry(createdEntry);
+            return createdEntry;
     }
 }

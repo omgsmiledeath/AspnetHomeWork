@@ -1,4 +1,7 @@
 
+using System.Collections;
+using Microsoft.EntityFrameworkCore;
+
 public class SiteRepository : IRepository
 {
     private readonly SiteDbContext _context;
@@ -6,14 +9,22 @@ public class SiteRepository : IRepository
     {
         _context = cont;
     }    
-    public IQueryable<Entry> GetEntries()
+    public async Task<ICollection<Entry>> GetEntries(DateOnly date)
     {
-        return _context.Entries;    
+        return await _context.Entries.Where(e=>
+        (e.Date.Year==date.Year)&&(e.Date.Month==date.Month)&&(e.Date.Day==date.Day))
+        .OrderBy(e => e.Date)
+        .ToArrayAsync();  
+        //return await _context.Entries.ToArrayAsync();
     }
-    public void AddEntry(Entry entry){
-        System.Console.WriteLine(entry);
-        _context.Add(entry);
-        _context.SaveChanges();
+    public Task AddEntry(Entry entry){
+
+        return Task.Run( async ()=> {
+            //if(_context.Entries.Where(e=> e.Date == entry.Date) == null){
+            await _context.AddAsync(entry);
+            await _context.SaveChangesAsync();
+            //}
+        });
     }
 
 }

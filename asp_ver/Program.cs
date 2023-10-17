@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SiteDbContext>();
-builder.Services.AddScoped<IRepository,SiteRepository>();
+builder.Services.AddTransient<IRepository,SiteRepository>();
 
 var app = builder.Build();
 app.UseDeveloperExceptionPage();

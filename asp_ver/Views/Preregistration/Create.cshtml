@@ -1,5 +1,10 @@
 @model CreateEntryVM 
 
+@foreach(var e in Model.Entries){
+    <div>
+    <span>@e.Date</span>
+    </div>
+}
 <h4>@Model.Message</h4>
 
 <a class="btn btn-primary" href="/preregistration" role="button">Назад</a>
