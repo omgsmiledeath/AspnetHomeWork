@@ -16,11 +16,17 @@
                 @e.Time
                 <span class="badge badge-primary">@status</span>
             </h8>
-                <div class="form-check col-md-6">
-                    <input class="form-check-input col-md-8" id=@e.InputId name="Ids" value=@e.InputId
+                <div class="form-check col-md-3">
+                    <input class="form-check-input " id=@e.InputId name="Ids" value=@e.InputId
                     type="checkbox"  disabled="@e.isChecked"/>
-                    <label class="form-check-label col-md-8" for="@e.InputId"
+                    <label class="form-check-label " for="@e.InputId"
                     style="font-size: smaller;" >Выбрать</label>
+                </div>
+                <div class="col-sm-1">
+                  <form method="post" asp-controller="Preregistration" asp-action="Entries">
+                  <label name="entryId" value=@e.ThisEntry?.Id></label> 
+                  <input type="submit" value="Инфо" />
+                  </form>
                 </div>
             
         </div>

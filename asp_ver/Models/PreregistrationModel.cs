@@ -16,7 +16,6 @@ public class PreregistrationModel
         for (int i =10;i<23;i++){
             var curTime = new TimeOnly(i,0);
             var filtrEntry = entries.SingleOrDefault(e => e.Date.Hour == curTime.Hour);
-            System.Console.WriteLine(filtrEntry?.Date);
             InputEntries.Add(InputEntriesFC.CreateInputEntry(filtrEntry,curTime,count++));
         }
     }

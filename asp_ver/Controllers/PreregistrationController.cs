@@ -24,7 +24,19 @@ public class PreregistrationController:Controller {
 
         return View(preregVm);
     }
-
+    [HttpGet]
+    public IActionResult Entries() => View("Entries",_repo.GetAllEntries());
+    [HttpPost]
+    public IActionResult Entries(int entryId) {
+        var entry = _repo.GetEntry(entryId);
+        System.Console.WriteLine(entry is null);
+        if(entry is null){
+            return View("Create",new CreateEntryVM(null,"Такой записи нет"));
+        }
+        else {
+            return View("Entries",new List<Entry>(){entry});
+        }
+    }
     [HttpPost]
     public async Task<IActionResult> Create(NewEntry newEntry){
         if(newEntry.Ids is null){

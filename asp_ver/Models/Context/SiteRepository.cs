@@ -26,5 +26,12 @@ public class SiteRepository : IRepository
             //}
         });
     }
+    public Entry? GetEntry(int id){
+        return _context.Entries.SingleOrDefault(e=>e.Id == id);
+    }
 
+    public ICollection<Entry> GetAllEntries()
+    {
+        return _context.Entries.ToList();
+    }
 }

@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJlcmVnaXN0cmF0aW9uL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/Views/Preregistration/Entries.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJlcmVnaXN0cmF0aW9uL0VudHJpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/holiday/Code/dotnet/AspnetHomeWork/asp_ver/Views/Preregistration/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJlcmVnaXN0cmF0aW9uL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

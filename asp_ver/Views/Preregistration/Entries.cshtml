@@ -1,0 +1,26 @@
+@model List<Entry>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Имя</th>
+            <th>Дата и время</th>
+            <th>Телефон</th>
+            <th>Дополнительно</th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var e in Model){
+            <tr class="table-light">
+            <td>@e.Id</td>
+            <td><input value=@e.Owner/></td>
+            <td>@e.Date</td>
+            <td>@e.Phone</td>
+            <td>@e.Description</td>
+        </tr>
+        }
+    </tbody>
+</table>    
+
+
