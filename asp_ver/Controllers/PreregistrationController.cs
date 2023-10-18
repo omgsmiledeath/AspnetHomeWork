@@ -24,14 +24,13 @@ public class PreregistrationController:Controller {
 
         return View(preregVm);
     }
+    
     [HttpGet]
-    public IActionResult Entries() => View("Entries",_repo.GetAllEntries());
-    [HttpPost]
-    public IActionResult Entries(int entryId) {
+    public IActionResult Entries(int entryId=0) {
+        if (entryId == 0) return View("Entries",_repo.GetAllEntries()); 
         var entry = _repo.GetEntry(entryId);
-        System.Console.WriteLine(entry is null);
         if(entry is null){
-            return View("Create",new CreateEntryVM(null,"Такой записи нет"));
+            return View("Create",new CreateEntryVM(new List<Entry>(),"Такой записи нет"));
         }
         else {
             return View("Entries",new List<Entry>(){entry});
