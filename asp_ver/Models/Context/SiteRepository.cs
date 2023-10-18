@@ -34,4 +34,17 @@ public class SiteRepository : IRepository
     {
         return _context.Entries.ToList();
     }
+
+    public async Task RemoveEntry(int id)
+    {
+        var entry = await _context.Entries.SingleAsync(e=>e.Id==id);
+        if(entry is not null) _context.Remove(entry);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task UpdateEntry(Entry entry)
+    {
+        var baseEntry = _context.Entries.Update(entry);
+        await _context.SaveChangesAsync();
+    }
 }

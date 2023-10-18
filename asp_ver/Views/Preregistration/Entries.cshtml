@@ -12,13 +12,15 @@
     </thead>
     <tbody>
         @foreach(var e in Model){
+        <form method="post">
             <tr class="table-light">
             <td>@e.Id</td>
-            <td><input value=@e.Owner/></td>
+            <td><input type="text" value=@e.Owner/></td>
             <td>@e.Date</td>
             <td>@e.Phone</td>
             <td>@e.Description</td>
-        </tr>
+            </tr>
+        </form>
         }
     </tbody>
 </table>    

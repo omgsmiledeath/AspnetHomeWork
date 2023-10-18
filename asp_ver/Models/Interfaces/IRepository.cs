@@ -5,4 +5,8 @@ public interface IRepository
 
     Entry? GetEntry(int id);
     Task AddEntry(Entry entry);
+
+    Task RemoveEntry(int id);
+    Task UpdateEntry(Entry entry);
+
 }
