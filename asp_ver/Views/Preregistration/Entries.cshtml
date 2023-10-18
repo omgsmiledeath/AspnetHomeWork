@@ -7,22 +7,54 @@
             <th>Имя</th>
             <th>Дата и время</th>
             <th>Телефон</th>
-            <th>Дополнительно</th> 
+            <th>Дополнительно</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var e in Model){
-        <form method="post">
-            <tr class="table-light">
-            <td>@e.Id</td>
-            <td><input type="text" value=@e.Owner/></td>
-            <td>@e.Date</td>
-            <td>@e.Phone</td>
-            <td>@e.Description</td>
-            </tr>
-        </form>
+        @foreach (var e in Model)
+        {
+            <form method="post">
+                <tr class="table-light">
+                    <td>@e.Id</td>
+                    <td><text value=@e.Owner></text></td>
+                    <td>@e.Date</td>
+                    <td>@e.Phone</td>
+                    <td>@e.Description</td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#entryModal">
+                            Дополнить данные
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="entryModal" tabindex="-1" role="dialog"
+                            aria-labelledby="entryModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="entryModalLabel">Введите данные</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <input type="date" name="Date" value=@e.Date />
+                                            <div><input name="Owner" value=@e.Owner /> <label>Имя</label></div>
+                                            <div><input name="Phone" value=@e.Phone/> <label>номер телефона</label></div>
+                                            <div><input type="text" name="Description" value=@e.Description /> <label>Дополнительно</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Закрыть</button>
+                                        <input class="btn btn-primary" type="submit" value="Отправить">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </form>
         }
     </tbody>
-</table>    
-
-
+</table>
