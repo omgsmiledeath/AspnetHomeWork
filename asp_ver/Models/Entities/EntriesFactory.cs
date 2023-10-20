@@ -8,6 +8,14 @@ public static class EntriesFactory
             Phone = props.Phone
         };
     }
+    public static string createInputDate(DateTime date){
+        return $"{date.Year.ToString()}-{charCheck(date.Month)}-{charCheck(date.Day)}T{charCheck(date.Hour)}:{charCheck(date.Minute)}";
+    }
+
+    private static string charCheck(int n){
+        if(n.ToString().Length==1) return $"0{n}";
+        else return n.ToString();
+    }
     public static DateTime CreateEntryDT (int inputId,string dateOnly){
        var yMd =  DateOnly.ParseExact(dateOnly,"yyyy-MM-dd");
        var hm = TimeIds[inputId];

@@ -6,7 +6,7 @@
   
 </form> 
 <form method="post" action="/preregistration/create">  
-<div>
+<div >
 @foreach (var e in Model.GetInputEntries()){
     var status = @e.isChecked?"Занято":"Свободно";
     var bgColor = @e.isChecked?"#696969":"#A9A9A9";

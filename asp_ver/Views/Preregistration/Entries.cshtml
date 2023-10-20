@@ -16,7 +16,7 @@
             <form method="post">
                 <tr class="table-light">
                     <td>@e.Id</td>
-                    <td><text value=@e.Owner></text></td>
+                    <td class="cell-9">@e.Owner</td>
                     <td>@e.Date</td>
                     <td>@e.Phone</td>
                     <td>@e.Description</td>
@@ -36,8 +36,8 @@
                                     </div>
                                     <div class="modal-body">
                                         <div>
-                                            <input type="date" name="Date" value=@e.Date />
-                                            <div><input name="Owner" value=@e.Owner /> <label>Имя</label></div>
+                                            <input type="datetime-local" name="Date" value=@EntriesFactory.createInputDate(e.Date) />
+                                            <div><input name="Owner" value="@e.Owner" /> <label>Имя</label></div>
                                             <div><input name="Phone" value=@e.Phone/> <label>номер телефона</label></div>
                                             <div><input type="text" name="Description" value=@e.Description /> <label>Дополнительно</label></div>
                                         </div>
