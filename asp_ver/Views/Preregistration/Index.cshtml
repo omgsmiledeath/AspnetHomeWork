@@ -22,9 +22,9 @@
                     <label class="form-check-label " for="@e.InputId"
                     style="font-size: smaller;" >Выбрать</label>
                 </div>
-                <div class="col-sm-1">
-                  <a type="btn" href="/preregistration/entries?entryId=@e.ThisEntry?.Id">инф</a>
-                </div>
+                @if (e.ThisEntry is not null){
+                  @await Html.PartialAsync("_EntryInfo",e.ThisEntry.Id)
+                }
             
         </div>
     </div>
