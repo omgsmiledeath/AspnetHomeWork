@@ -30,7 +30,7 @@ public class PreregistrationController:Controller {
         if (entryId == 0) return View("Entries",_repo.GetAllEntries()); 
         var entry = _repo.GetEntry(entryId);
         if(entry is null){
-            return View("Create",new CreateEntryVM(new List<Entry>(),"Такой записи нет"));
+            return View("Create",CreateEntryVMF.Create("Такой записи нет","/Preregistration/"));
         }
         else {
             return View("Entries",new List<Entry>(){entry});
@@ -39,35 +39,34 @@ public class PreregistrationController:Controller {
 
     [HttpPost]
     public async Task<IActionResult> EntryEdit(int Id,string Owner,string Description,string Date,string Phone){
-        System.Console.WriteLine(Owner);
         var dt = DateTime.Parse(Date);
         await _repo.UpdateEntry(new Entry(){Id=Id,Owner=Owner,Description=Description,Phone=Phone,Date=dt});
-        return View("Create",new CreateEntryVM(new List<Entry>(),$"Запись отредактированна"));
+        return View("Create",CreateEntryVMF.Create($"Запись отредактированна","/Preregistration/Entries"));
     }
 
     [HttpPost]
     public async Task<IActionResult> DeleteEntry(int Id){
         await _repo.RemoveEntry(Id);
-        return View("Create",new CreateEntryVM(new List<Entry>(),$"Запись удаленна"));
+        return View("Create",CreateEntryVMF.Create($"Запись удаленна","/Preregistration/Entries"));
 
     }
     [HttpPost]
     public async Task<IActionResult> Create(NewEntry newEntry){
         if(newEntry.Ids is null){
-            return View("Create",new CreateEntryVM(new(),"Время не выбранно"));
+            return View("Create",CreateEntryVMF.Create("Время не выбранно","/Preregistration/"));
         }
         var newEntries = new List<Entry>();
         if(newEntry.Ids.Count() > 1)
         foreach(var i in newEntry.Ids) {
-            newEntries.Add(await entriyToBase(newEntry.Date,newEntry.Owner,newEntry.Phone,newEntry.Description,i));
+            newEntries.Add(await entriyToBase(newEntry.Date,i,newEntry.Owner,newEntry.Phone,newEntry.Description));
         }
         else {
-            newEntries.Add(await entriyToBase(newEntry.Date,newEntry.Owner,newEntry.Phone,newEntry.Description,newEntry.Ids[0]));
+            newEntries.Add(await entriyToBase(newEntry.Date,newEntry.Ids[0],newEntry.Owner,newEntry.Phone,newEntry.Description));
 
         }
-        return View("Create",new CreateEntryVM(newEntries,"Запись добавленна"));
+        return View("Create",CreateEntryVMF.Create(newEntries,"Запись добавленна","/Preregistration/"));
     }
-    private async Task<Entry> entriyToBase (string Date,string Owner,string Phone,string Description,int id){
+    private async Task<Entry> entriyToBase (string Date,int id,string Owner="Guest",string Phone="unknown",string Description="Ничего"){
             var dt = EntriesFactory.CreateEntryDT(id,Date);
             var createdEntry = EntriesFactory.CreateEntry(new EntryProps(Owner,
             Phone,Description,dt));
