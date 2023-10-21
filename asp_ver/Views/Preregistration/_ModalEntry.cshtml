@@ -1,0 +1,36 @@
+@model Entry
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#entry-@Model.Id">
+    Дополнить данные
+</button>
+<form action="/preregistration/entryedit" method="post">
+
+    <!-- Modal -->
+    <div class="modal fade" id="entry-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Введите данные</h5>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <input name="Id" type="number" value=@Model.Id />
+                        <input type="datetime-local" name="Date" value=@EntriesFactory.createInputDate(Model.Date) />
+                        <div><input name="Owner" value="@Model.Owner" /> <label>Имя</label></div>
+                        <div><input name="Phone" value=@Model.Phone /> <label>номер телефона</label></div>
+                        <div><input type="text" name="Description" value=@Model.Description />
+                            <label>Дополнительно</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <input class="btn btn-primary" type="submit" value="Отправить">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

@@ -36,6 +36,21 @@ public class PreregistrationController:Controller {
             return View("Entries",new List<Entry>(){entry});
         }
     }
+
+    [HttpPost]
+    public async Task<IActionResult> EntryEdit(int Id,string Owner,string Description,string Date,string Phone){
+        System.Console.WriteLine(Owner);
+        var dt = DateTime.Parse(Date);
+        await _repo.UpdateEntry(new Entry(){Id=Id,Owner=Owner,Description=Description,Phone=Phone,Date=dt});
+        return View("Create",new CreateEntryVM(new List<Entry>(),$"Запись отредактированна"));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteEntry(int Id){
+        await _repo.RemoveEntry(Id);
+        return View("Create",new CreateEntryVM(new List<Entry>(),$"Запись удаленна"));
+
+    }
     [HttpPost]
     public async Task<IActionResult> Create(NewEntry newEntry){
         if(newEntry.Ids is null){
