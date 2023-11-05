@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/asp_ve.props" />
-</Project>
